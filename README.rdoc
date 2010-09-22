@@ -6,7 +6,7 @@ Rails gem / plugin for generating mysql foreign key constraints.
   
 === as gem
   
-  sudo gem install sleistner-migration_fu --source http://gems.github.com
+  sudo gem install artemk-migration_fu
   
 === or plugin
   

@@ -2,7 +2,6 @@ require 'rubygems'
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
-require 'echoe'
 
 desc 'Default: run unit tests.'
 task :default => :test
@@ -33,13 +32,23 @@ namespace :test do
   end
 end
 
-Echoe.new('migration_fu', '0.0.2') do |p|
-  p.description     = 'Rails gem / plugin for generating mysql foreign key constraints.'
-  p.url             = 'http://github.com/sleistner/migration_fu'
-  p.author          = 'Steffen Leistner'
-  p.email           = 'sleistner@gmail.com'
-  p.ignore_pattern  = ['tmp/*', 'script/*.rake']
-  p.development_dependencies = []
-end
-
 Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
+
+require 'jeweler'
+jt = Jeweler::Tasks.new do |gem|
+  gem.name = "artemk-migration_fu"
+  gem.summary = "Add and remove FK in MYSQL"
+  gem.description = "Add and remove FK in MYSQL"
+  gem.email = "artemk@svitla.com"
+  gem.has_rdoc = false
+  gem.files    = FileList[
+    "README",
+    "lib/**/*.rb",
+    "init.rb"
+  ]
+  gem.test_files = FileList[
+    "test/**/*.rb"
+  ]
+end
+Jeweler::GemcutterTasks.new
+
